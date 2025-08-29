@@ -1,0 +1,24 @@
+:root {
+  --forest-green: #2f5d50;
+  --deep-pine: #1b2a2f;
+
+  --campfire-orange: #e76f51;
+  --ember-red: #9c3d2b;
+  --golden-yellow: #e9c46a;
+
+  --soft-beige: #f4f1de;
+  --stone-gray: #6b6b6b;
+
+  --sky-blue: #6ca6c1;
+  --midnight-blue: #0b1d29;
+}
+
+#myVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
