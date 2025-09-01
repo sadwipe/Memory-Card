@@ -10,7 +10,9 @@ export default function GameScreen({
   setCards,
   playClick,
   currentScore,
+  setCurrentScore,
   bestScore,
+  setDifficulty,
 }) {
   return (
     <>
@@ -23,6 +25,13 @@ export default function GameScreen({
           animate={{ opacity: 1 }}
           src={logo}
           alt='Logo'
+          // Reset difficulty and return to main page when clicking the logo
+          onClick={() => {
+            playClick();
+            setDifficulty(null);
+            setCards([]);
+            setCurrentScore(0);
+          }}
         />
         <motion.div
           transition={{ duration: 0.5, ease: 'easeOut' }}
@@ -34,6 +43,10 @@ export default function GameScreen({
           <p>Best score: {bestScore}</p>
         </motion.div>
       </header>
+      <main>
+        <div className='card-container'></div>
+        <p className='rounds-remaining'></p>
+      </main>
     </>
   );
 }

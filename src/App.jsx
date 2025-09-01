@@ -67,8 +67,10 @@ function App() {
             />
           ) : (
             <GameScreen
+              setDifficulty={setDifficulty}
               bestScore={bestScore}
               currentScore={currentScore}
+              setCurrentScore={setCurrentScore}
               cards={cards}
               setCards={setCards}
               playClick={playClick}
