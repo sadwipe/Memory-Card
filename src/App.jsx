@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
+import { useState, useEffect, use } from 'react';
 
 import Footer from './components/Footer/Footer';
 import StartMenu from './components/Menu/StartMenu';
@@ -11,11 +10,23 @@ import video from './assets/videos/background.mp4';
 import clickSound from './assets/sounds/click-sound.mp3';
 
 function App() {
-  const [isMusicPlaying, setIsMusicPlaying] = useState(false);
-  const [isSoundPlaying, setIsSoundPlaying] = useState(true);
+  // Both music/sound states are initialized using localStorage values
+  // So user preferences persist across page reloads.
+  const [isMusicPlaying, setIsMusicPlaying] = useState(() => {
+    const saved = localStorage.getItem('musicStatus');
+    return saved !== null ? saved === 'true' : false;
+  });
+
+  const [isSoundPlaying, setIsSoundPlaying] = useState(() => {
+    const saved = localStorage.getItem('soundStatus');
+    return saved !== null ? saved === 'true' : true;
+  });
+
   const [cards, setCards] = useState([]);
   const [difficulty, setDifficulty] = useState(null);
   const [isLoadingOver, setIsLoadingOver] = useState(false);
+  const [currentScore, setCurrentScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
 
   // For click sound
   const playClick = () => {
@@ -27,10 +38,12 @@ function App() {
   };
 
   useEffect(() => {
-    if (difficulty) {
-      localStorage.setItem('difficulty', difficulty);
-    }
-  }, [difficulty]);
+    localStorage.setItem('soundStatus', isSoundPlaying.toString());
+  }, [isSoundPlaying]);
+
+  useEffect(() => {
+    localStorage.setItem('musicStatus', isMusicPlaying.toString());
+  }, [isMusicPlaying]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -54,6 +67,8 @@ function App() {
             />
           ) : (
             <GameScreen
+              bestScore={bestScore}
+              currentScore={currentScore}
               cards={cards}
               setCards={setCards}
               playClick={playClick}

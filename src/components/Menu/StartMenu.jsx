@@ -27,7 +27,7 @@ export default function StartMenu({ playClick, setCards, setDifficulty }) {
       transition={{ duration: 0.5, ease: 'easeOut' }}
     >
       <img src={logo} alt='Logo' />
-      <h1>Memory Game </h1>
+      <h1>Memory Game</h1>
       <div className='difficulty-container'>
         {BUTTON_NAMES.map((name) => {
           return (
