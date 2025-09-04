@@ -1,0 +1,25 @@
+.card {
+  aspect-ratio: 1 / 1.5;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid black;
+  border-radius: 25px;
+  padding: 8px 10px;
+  background-color: #184d47;
+  cursor: pointer;
+}
+
+.card > img {
+  width: 100%;
+  height: 90%;
+  border-radius: 25px;
+}
+
+.card > .card-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}

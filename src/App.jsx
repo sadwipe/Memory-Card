@@ -1,4 +1,4 @@
-import { useState, useEffect, use } from 'react';
+import { useState, useEffect } from 'react';
 
 import Footer from './components/Footer/Footer';
 import StartMenu from './components/Menu/StartMenu';
@@ -6,8 +6,6 @@ import GameScreen from './components/Game/GameScreen';
 import LoadingScreen from './components/Menu/LoadingScreen';
 
 import video from './assets/videos/background.mp4';
-
-import clickSound from './assets/sounds/click-sound.mp3';
 
 function App() {
   // Both music/sound states are initialized using localStorage values
@@ -23,19 +21,18 @@ function App() {
   });
 
   const [cards, setCards] = useState([]);
+
+  const [cardsPerRound, setCardsPerRound] = useState(null);
+
   const [difficulty, setDifficulty] = useState(null);
+
+  const [rounds, setRounds] = useState(null);
+  const [currentRound, setCurrentRound] = useState(0);
+
   const [isLoadingOver, setIsLoadingOver] = useState(false);
+
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
-
-  // For click sound
-  const playClick = () => {
-    if (isSoundPlaying) {
-      const audio = new Audio(clickSound);
-      audio.volume = 0.07;
-      audio.play();
-    }
-  };
 
   useEffect(() => {
     localStorage.setItem('soundStatus', isSoundPlaying.toString());
@@ -59,21 +56,25 @@ function App() {
         <>
           {difficulty === null ? (
             <StartMenu
-              cards={cards}
-              difficulty={difficulty}
+              isSoundPlaying={isSoundPlaying}
+              setCardsPerRound={setCardsPerRound}
+              setRounds={setRounds}
               setDifficulty={setDifficulty}
               setCards={setCards}
-              playClick={playClick}
             />
           ) : (
             <GameScreen
+              isSoundPlaying={isSoundPlaying}
+              setCardsPerRound={setCardsPerRound}
+              cardsPerRound={cardsPerRound}
               setDifficulty={setDifficulty}
               bestScore={bestScore}
               currentScore={currentScore}
               setCurrentScore={setCurrentScore}
               cards={cards}
               setCards={setCards}
-              playClick={playClick}
+              rounds={rounds}
+              currentRound={currentRound}
             />
           )}
 
@@ -83,7 +84,6 @@ function App() {
             isSoundPlaying={isSoundPlaying}
             setIsMusicPlaying={setIsMusicPlaying}
             setIsSoundPlaying={setIsSoundPlaying}
-            playClick={playClick}
           />
         </>
       )}

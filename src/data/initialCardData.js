@@ -73,9 +73,3 @@ export const cards = Object.freeze([
     src: woodpeckerImg,
   },
 ]);
-
-// Returns 8 / 10 / 12 depends on difficulty
-export function getCardsByDifficulty(level) {
-  const num = level === 'easy' ? 8 : level === 'medium' ? 10 : 12;
-  return cards.slice(0, num);
-}

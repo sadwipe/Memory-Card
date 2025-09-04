@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import CardItem from './CardItem.jsx';
+
 import { motion } from 'motion/react';
+import { playClick } from '../../utils/sound.js';
 
 import logo from '../../assets/images/icons/logo.svg';
 
@@ -8,11 +10,15 @@ import '../../styles/GameScreen.css';
 export default function GameScreen({
   cards,
   setCards,
-  playClick,
   currentScore,
   setCurrentScore,
   bestScore,
   setDifficulty,
+  rounds,
+  currentRound,
+  cardsPerRound,
+  setCardsPerRound,
+  isSoundPlaying
 }) {
   return (
     <>
@@ -27,7 +33,8 @@ export default function GameScreen({
           alt='Logo'
           // Reset difficulty and return to main page when clicking the logo
           onClick={() => {
-            playClick();
+            setCardsPerRound(null);
+            playClick(isSoundPlaying);
             setDifficulty(null);
             setCards([]);
             setCurrentScore(0);
@@ -44,8 +51,14 @@ export default function GameScreen({
         </motion.div>
       </header>
       <main>
-        <div className='card-container'></div>
-        <p className='rounds-remaining'></p>
+        <div className='card-container'>
+          {cards.map((card) => {
+            return <CardItem key={card.id} card={card} />;
+          })}
+        </div>
+        <p className='rounds-remaining'>
+          {currentRound} / {rounds}
+        </p>
       </main>
     </>
   );

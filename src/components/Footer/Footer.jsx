@@ -9,16 +9,14 @@ export default function Footer({
   isSoundPlaying,
   setIsMusicPlaying,
   setIsSoundPlaying,
-  playClick,
 }) {
   return (
-    <>
+    <footer>
       <ButtonContainer
         musicStatus={isMusicPlaying}
         soundsStatus={isSoundPlaying}
         setMusicStatus={setIsMusicPlaying}
         setSoundsStatus={setIsSoundPlaying}
-        playClick={playClick}
       />
       <ReactHowler
         src={backgroundMusic}
@@ -26,6 +24,6 @@ export default function Footer({
         loop={true}
         volume={0.05}
       />
-    </>
+    </footer>
   );
 }

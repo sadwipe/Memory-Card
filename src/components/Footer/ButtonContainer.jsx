@@ -1,5 +1,7 @@
 import { motion } from 'motion/react';
 
+import { playClick } from '../../utils/sound';
+
 import musicOff from '../../assets/images/icons/music_off.svg';
 import musicOn from '../../assets/images/icons/music_sign.svg';
 import soundsOff from '../../assets/images/icons/volume_off.svg';
@@ -11,8 +13,7 @@ export default function ButtonContainer({
   musicStatus,
   soundsStatus,
   setMusicStatus,
-  setSoundsStatus,
-  playClick,
+  setSoundsStatus
 }) {
   return (
     <motion.div
@@ -27,7 +28,7 @@ export default function ButtonContainer({
         transition={{ duration: 0.25, ease: 'easeIn' }}
         onClick={() => {
           setSoundsStatus(!soundsStatus);
-          playClick();
+          playClick(soundsStatus);
         }}
       >
         <img src={soundsStatus ? soundsOn : soundsOff} alt='Sound Status' />
@@ -38,7 +39,7 @@ export default function ButtonContainer({
         transition={{ duration: 0.25, ease: 'easeIn' }}
         onClick={() => {
           setMusicStatus(!musicStatus);
-          playClick();
+          playClick(soundsStatus);
         }}
       >
         <img src={musicStatus ? musicOn : musicOff} alt='Music Status' />
