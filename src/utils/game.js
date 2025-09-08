@@ -29,3 +29,23 @@ export function getCardsByDifficulty(difficulty) {
 export function cardsPerRoundByDifficulty(difficulty) {
   return difficulty === 'easy' ? 3 : difficulty === 'medium' ? 4 : 5;
 }
+
+export function getDisplayedCards(cards, cardsPerRound) {
+  const unclicked = cards.filter((card) => !card.isClicked);
+  const clicked = cards.filter((card) => card.isClicked);
+
+  if (unclicked.length === 0) {
+    // all cards clicked, just return random ones
+    return shuffle(cards).slice(0, cardsPerRound);
+  }
+
+  const selectedUnclicked =
+    unclicked[Math.floor(Math.random() * unclicked.length)];
+
+  const remaining = shuffle(cards.filter((c) => c !== selectedUnclicked)).slice(
+    0,
+    cardsPerRound - 1,
+  );
+
+  return shuffle([selectedUnclicked, ...remaining]);
+}

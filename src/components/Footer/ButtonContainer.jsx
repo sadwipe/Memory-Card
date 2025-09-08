@@ -13,7 +13,7 @@ export default function ButtonContainer({
   musicStatus,
   soundsStatus,
   setMusicStatus,
-  setSoundsStatus
+  setSoundsStatus,
 }) {
   return (
     <motion.div

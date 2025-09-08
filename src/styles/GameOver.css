@@ -1,0 +1,65 @@
+.win {
+  background-image: url("../assets/images/happy.jpg");
+}
+
+.lose {
+  background-image: url("../assets/images/sad.jpg");
+}
+
+.overlay {
+  position: absolute;       /* relative to viewport, ignores parent */
+  top: 0;
+  left: 0;
+  width: 100vw;          /* viewport width */
+  height: 100vh;         /* viewport height */
+  z-index: 1;         /* make sure it’s above other elements */
+  background-color: black;
+  opacity: 0.1;
+}
+
+.lose,
+.win {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  aspect-ratio: 1.82 / 1;
+  background-position: 50%;
+  background-size: cover;
+  border-radius: 25px;
+  flex-direction: column;
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  transform: translate(50%, -50%);
+  width: 800px;
+  z-index: 2;
+  padding: 20px;
+  font-family: "Quicksand", sans-serif;
+}
+
+.lose > button,
+.win > button {
+  padding: 10px 30px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 20px;
+  border: none;
+}
+
+.lose > div {
+  background-color: red;
+}
+
+.win > div {
+  background-color: green;
+  opacity: 0.8;
+}
+
+.win > div,
+.lose > div {
+  font-size: 3rem;
+  font-weight: bold;
+  padding: 10px 30px;
+  border-radius: 20px;
+  color: white;
+}

@@ -6,16 +6,16 @@ import ReactHowler from 'react-howler';
 
 export default function Footer({
   isMusicPlaying,
-  isSoundPlaying,
   setIsMusicPlaying,
+  isSoundPlaying,
   setIsSoundPlaying,
 }) {
   return (
     <footer>
       <ButtonContainer
         musicStatus={isMusicPlaying}
-        soundsStatus={isSoundPlaying}
         setMusicStatus={setIsMusicPlaying}
+        soundsStatus={isSoundPlaying}
         setSoundsStatus={setIsSoundPlaying}
       />
       <ReactHowler

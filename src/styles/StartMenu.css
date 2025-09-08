@@ -12,7 +12,7 @@
   font-size: 5rem;
   color: var(--midnight-blue);
   font-weight: bold;
-  font-family: 'Amatic';
+  font-family: 'Amatic', sans-serif;
   user-select: none;
 }
 
@@ -27,7 +27,7 @@
 }
 
 .difficulty-container > button {
-  font-family: 'Quicksand';
+  font-family: "Quicksand", sans-serif;
   font-weight: bold;
   font-size: 2rem;
   border-radius: 10px;

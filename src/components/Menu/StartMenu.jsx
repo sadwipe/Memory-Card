@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { motion } from 'motion/react';
 
 import { playClick } from '../../utils/sound';
-import { shuffle } from '../../utils/game.js';
+import { shuffle, getDisplayedCards } from '../../utils/game.js';
 
 import logo from '../../assets/images/icons/logo.svg';
 import '../../styles/StartMenu.css';
@@ -15,10 +15,11 @@ import {
 
 export default function StartMenu({
   setCards,
-  setDifficulty,
-  setRounds,
+  setDisplayedCards,
   setCardsPerRound,
-  isSoundPlaying
+  setRounds,
+  setDifficulty,
+  isSoundPlaying,
 }) {
   const BUTTON_NAMES = ['easy', 'medium', 'hard'];
 
@@ -32,12 +33,16 @@ export default function StartMenu({
     // Set the cards depending on the difficulty chosen
     const cards = getCardsByDifficulty(difficulty);
 
+    // Number of cards shown per round
+    const cardsPerRound = cardsPerRoundByDifficulty(difficulty);
+
     // Number of rounds equals the number of cards for the chosen difficulty
     const rounds = cards.length;
 
     setRounds(rounds);
     setCards(shuffle(cards));
-    setCardsPerRound(cardsPerRoundByDifficulty(difficulty));
+    setCardsPerRound(cardsPerRound);
+    setDisplayedCards(getDisplayedCards(cards, cardsPerRound));
   }
 
   return (
