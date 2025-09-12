@@ -10,7 +10,7 @@
 }
 
 .loading-screen > h2 {
-  font-family: "Quicksand", sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-size: 3rem;
   font-weight: bold;
   color: var(--midnight-blue);

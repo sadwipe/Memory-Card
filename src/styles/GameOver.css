@@ -1,18 +1,18 @@
 .win {
-  background-image: url("../assets/images/happy.jpg");
+  background-image: url('../assets/images/happy.jpg');
 }
 
 .lose {
-  background-image: url("../assets/images/sad.jpg");
+  background-image: url('../assets/images/sad.jpg');
 }
 
 .overlay {
-  position: absolute;       /* relative to viewport, ignores parent */
+  position: absolute; /* relative to viewport, ignores parent */
   top: 0;
   left: 0;
-  width: 100vw;          /* viewport width */
-  height: 100vh;         /* viewport height */
-  z-index: 1;         /* make sure it’s above other elements */
+  width: 100vw; /* viewport width */
+  height: 100vh; /* viewport height */
+  z-index: 1; /* make sure it’s above other elements */
   background-color: black;
   opacity: 0.1;
 }
@@ -34,7 +34,7 @@
   width: 800px;
   z-index: 2;
   padding: 20px;
-  font-family: "Quicksand", sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .lose > button,
@@ -44,15 +44,19 @@
   font-weight: bold;
   border-radius: 20px;
   border: none;
+  cursor: pointer;
 }
 
 .lose > div {
+  opacity: 0.8;
   background-color: red;
+  user-select: none;
 }
 
 .win > div {
-  background-color: green;
-  opacity: 0.8;
+  background-color: rgb(12, 106, 173);
+  opacity: 0.9;
+  user-select: none;
 }
 
 .win > div,

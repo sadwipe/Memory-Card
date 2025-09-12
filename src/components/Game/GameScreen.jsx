@@ -46,11 +46,13 @@ export default function GameScreen({
             setCards([]);
             setCurrentScore(0);
             setBestScore(0);
-            setCards(
-              cards.map((card) => {
-                delete card.isClicked;
-              }),
-            );
+
+            const newCards = cards.map((card) => {
+              const copy = { ...card };
+              delete copy.isClicked;
+              return copy;
+            });
+            setCards(newCards);
           }}
         />
         <motion.div
@@ -86,6 +88,8 @@ export default function GameScreen({
               /* Game */
               setGameOverType={setGameOverType}
               setIsGameOver={setIsGameOver}
+              /* Sound */
+              isSoundPlaying={isSoundPlaying}
             />
           ))}
         </div>

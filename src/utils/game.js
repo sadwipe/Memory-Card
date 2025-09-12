@@ -17,9 +17,13 @@ export function shuffle(array) {
   return result;
 }
 
+export function getCardsNumberPerGame(difficulty) {
+  return difficulty === 'easy' ? 8 : difficulty === 'medium' ? 10 : 12;
+}
+
 // Returns 8, 10 or 12 random cards depending on the difficulty
 export function getCardsByDifficulty(difficulty) {
-  const num = difficulty === 'easy' ? 8 : difficulty === 'medium' ? 10 : 12;
+  const num = getCardsNumberPerGame(difficulty);
 
   // Shuffle the cards before slicing so we don't always play with the same ones
   return shuffle(cards).slice(0, num);

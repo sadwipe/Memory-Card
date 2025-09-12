@@ -117,7 +117,24 @@ function App() {
       <video autoPlay muted loop id='myVideo'>
         <source src={video} type='video/mp4' />
       </video>
-      {isGameOver && <GameOver gameOverType={gameOverType} />}
+      {isGameOver && (
+        <GameOver
+          /* Cards */
+          setCards={setCards}
+          setDisplayedCards={setDisplayedCards}
+          /* Difficulty */
+          difficulty={difficulty}
+          /* Score */
+          setCurrentScore={setCurrentScore}
+          /* Game */
+          setCurrentRound={setCurrentRound}
+          setGameOverType={setGameOverType}
+          setIsGameOver={setIsGameOver}
+          gameOverType={gameOverType}
+          /* Sound */
+          isSoundPlaying={isSoundPlaying}
+        />
+      )}
     </>
   );
 }
@@ -125,8 +142,6 @@ function App() {
 export default App;
 
 /*
-fix the game end screen
 add the reset game button
-fix the bug on the "win" (it auto wins after 3 guesses)
-find another image or modify the design so the button wont cover the photo of birds (win)
+penguin, 
 */

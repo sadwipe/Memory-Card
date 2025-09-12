@@ -1,6 +1,7 @@
 import '../../styles/CardItem.css';
 import { getDisplayedCards } from '../../utils/game';
 import { motion } from 'motion/react';
+import { playClick } from '../../utils/sound';
 
 export default function CardItem({
   card,
@@ -13,7 +14,10 @@ export default function CardItem({
   setBestScore,
   setGameOverType,
   setIsGameOver,
+  isSoundPlaying,
 }) {
+  const numberOfCards = cards.length;
+
   function handleClickButton() {
     if (card.isClicked) {
       setGameOverType('lose');
@@ -33,7 +37,7 @@ export default function CardItem({
     /* Refresh displayed cards */
     setDisplayedCards(getDisplayedCards(cards, cardsPerRound));
 
-    if (newScore === cardsPerRound) {
+    if (newScore === numberOfCards) {
       setGameOverType('win');
       setIsGameOver(true);
     }
@@ -41,7 +45,12 @@ export default function CardItem({
 
   return (
     <motion.div
-      onClick={handleClickButton}
+      onClick={() => {
+        playClick(isSoundPlaying);
+        setTimeout(() => {
+          handleClickButton();
+        }, 500);
+      }}
       whileTap={{ scale: 1 }}
       whileHover={{ scale: 1.1 }}
       className='card'
