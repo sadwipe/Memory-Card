@@ -48,16 +48,10 @@ function App() {
     localStorage.setItem('musicStatus', isMusicPlaying.toString());
   }, [isMusicPlaying]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoadingOver(true);
-    }, 2500);
-  }, []);
-
   return (
     <>
       {!isLoadingOver ? (
-        <LoadingScreen />
+        <LoadingScreen onFinish={() => setIsLoadingOver(true)}/>
       ) : (
         <>
           {difficulty === null ? (

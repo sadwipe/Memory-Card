@@ -73,3 +73,7 @@ export const cards = Object.freeze([
     src: woodpeckerImg,
   },
 ]);
+
+export const birdImages = cards.map(el => {
+  return el.src;
+})
