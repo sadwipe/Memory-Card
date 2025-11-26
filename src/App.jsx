@@ -7,6 +7,7 @@ import LoadingScreen from './components/Menu/LoadingScreen';
 import GameOver from './components/Game/GameOver';
 
 import video from './assets/videos/background.mp4';
+import poster from './assets/images/poster.png'
 function App() {
   // Sound & Music
   const [isMusicPlaying, setIsMusicPlaying] = useState(() => {
@@ -114,7 +115,7 @@ function App() {
         </>
       )}
 
-      <video autoPlay muted loop id='myVideo'>
+      <video autoPlay muted loop id='myVideo' poster={poster}>
         <source src={video} type='video/mp4' />
       </video>
       {isGameOver && (
