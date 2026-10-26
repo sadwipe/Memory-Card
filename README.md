@@ -1,26 +1,66 @@
-# React + Vite
+# Bird Brain — Memory Game
 
-This template provides a minimal setup to get React working in Vite with HMR and
-some ESLint rules.
+An interactive, responsive memory card game built with **React** and bundled via **Vite**. Players test their memory by selecting cards without clicking the same bird twice, featuring adaptive difficulty levels, sound controls, and comprehensive asset preloading.
 
-Currently, two official plugins are available:
+![Bird Brain Preview](./src/assets/images/preview.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react)
-  uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc)
-  uses [SWC](https://swc.rs/) for Fast Refresh
+## Live Demo
 
-## Expanding the ESLint configuration
+Play online: [**odin-memory-card-sadwipe.netlify.app**](https://odin-memory-card-sadwipe.netlify.app/)
 
-If you are developing a production application, we recommend using TypeScript
-with type-aware lint rules enabled. Check out the
-[TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts)
-for information on how to integrate TypeScript and
-[`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Key Features & Technical Highlights
 
+* **State & Game Loop:** Tracks current score, high score persistence, dynamic card shuffling on each turn, and win/loss resolution conditions.
+* **Asset Preloading & Performance:** Implements image preloading prior to gameplay start to prevent layout shifts and asset pop-in during fast shuffles.
+* **Audio & Media Management:** Custom volume and mute controls for background music and game sound effects.
+* **Component Testing:** Unit and integration testing on core menu and loading states using **React Testing Library** and **Vitest**.
+* **Containerization:** Includes a production-ready multi-stage `Dockerfile` serving static assets via Nginx.
+* **Difficulty Scaling:** Dynamic card deck sizing based on selected mode (Easy, Medium, Hard).
 
-# Build the Docker image
-docker build -t memory-card .
+## Tech Stack
 
-# Run the container
-docker run -p 8080:80 memory-card
+* **Core:** React 18, JavaScript (ES6+)
+* **Build Tool:** Vite
+* **Testing:** Vitest, React Testing Library
+* **DevOps:** Docker
+* **Styling:** Modular CSS3, CSS Reset, Responsive Layouts
+* **Deployment:** Netlify
+
+## Getting Started
+
+### Local Development
+
+1. Clone repository:
+   ```bash
+   git clone https://github.com/sadwipe/Memory-Card.git
+   cd Memory-Card
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Run development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Run test suite:
+   ```bash
+   npm test
+   ```
+
+### Run with Docker
+
+1. Build Docker image:
+   ```bash
+   docker build -t bird-brain .
+   ```
+
+2. Run container:
+   ```bash
+   docker run -d -p 8080:80 bird-brain
+   ```
+
+3. Access the application at `http://localhost:8080`.
